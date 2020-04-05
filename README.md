@@ -3,7 +3,7 @@ Rust lib for en/decoding address to velas/ether format
 
 # Usage
 ```rust
-use velas-address-rust::*;
+use velas_address_rust::*;
 
 fn main() {
     let eth_addresses = "0x32Be343B94f860124dC4fEe278FDCBD38C102D88";
