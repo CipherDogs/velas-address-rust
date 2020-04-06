@@ -36,7 +36,7 @@ pub fn eth_to_vlx(address: &str) -> Result<String, &str> {
     let mut encode = BaseX::new(BITCOIN).encode(&bytes);
 
     if encode.len() < 33 {
-        encode = format!("{}{}", "1".repeat(33 - encode.len() + 1), encode);
+        encode = format!("{}{}", "1".repeat(33 - encode.len()), encode);
     }
 
     Ok(format!("V{}", encode))
@@ -116,11 +116,11 @@ mod tests {
 
         let vlx_addresses = [
             "V5dJeCa7bmkqmZF53TqjRbnB4fG6hxuu4f",
-            "V1111111111111111111111111112jSS6vy",
+            "V111111111111111111111111112jSS6vy",
             "VNt1B3HD3MghPihCxhwMxNKRerBPPbiwvZ",
-            "V1111111111111111111111111111CdXjnE",
+            "V111111111111111111111111111CdXjnE",
             "V2Tbp525fpnBRiSt4iPxXkxMyf5ZX7bGAJ",
-            "V11111111111111111111111111113iMDfC",
+            "V1111111111111111111111111113iMDfC",
             "VQLbz7JHiBTspS962RLKV8GndWFwdcRndD",
         ];
 
