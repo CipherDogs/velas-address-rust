@@ -1,4 +1,8 @@
 # velas-address-rust
+
+![crates.io](https://img.shields.io/crates/v/velas-address-rust.svg)
+![docs.rs](https://docs.rs/velas-address-rust/badge.svg)
+
 Rust lib for en/decoding address to velas/ether format
 
 # Usage

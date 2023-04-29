@@ -1,3 +1,15 @@
+//! velas-address-rust
+//!
+//! Rust lib for en/decoding address to velas/ether format
+//!
+//! ```rust
+//! use velas_address_rust::*;
+//!
+//! let eth_addresses = "0x32Be343B94f860124dC4fEe278FDCBD38C102D88";
+//! let vlx_addr = eth_to_vlx(eth_addresses).unwrap(); // V5dJeCa7bmkqmZF53TqjRbnB4fG6hxuu4f
+//! let eth_addr = vlx_to_eth(&vlx_addr).unwrap(); // 0x32be343b94f860124dc4fee278fdcbd38c102d88
+//! ```
+//!
 use basex_rs::{BaseX, Decode, Encode, BITCOIN};
 use bitcoin_hashes::sha256;
 use bitcoin_hashes::Hash;
@@ -9,6 +21,15 @@ fn hash_sha256(byte: &[u8]) -> String {
     format!("{}", sha256::Hash::hash(byte))
 }
 
+/// Convert ETH address to VLX address
+///
+/// ```rust
+/// use velas_address_rust::*;
+///
+/// let eth_addresses = "0x32Be343B94f860124dC4fEe278FDCBD38C102D88";
+/// assert_eq!(eth_to_vlx(eth_addresses).unwrap(), "V5dJeCa7bmkqmZF53TqjRbnB4fG6hxuu4f".to_string())
+/// ```
+///
 pub fn eth_to_vlx(address: &str) -> Result<String, &str> {
     if address.is_empty() {
         return Err("Invalid address");
@@ -42,6 +63,15 @@ pub fn eth_to_vlx(address: &str) -> Result<String, &str> {
     Ok(format!("V{}", encode))
 }
 
+/// Convert VLX address to ETH address
+///
+/// ```rust
+/// use velas_address_rust::*;
+///
+/// let vlx_addresses = "V5dJeCa7bmkqmZF53TqjRbnB4fG6hxuu4f";
+/// assert_eq!(vlx_to_eth(vlx_addresses).unwrap(), "0x32be343b94f860124dc4fee278fdcbd38c102d88".to_string())
+/// ```
+///
 pub fn vlx_to_eth(address: &str) -> Result<String, &str> {
     if address.is_empty() {
         return Err("Invalid address");
